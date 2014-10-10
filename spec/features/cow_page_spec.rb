@@ -8,4 +8,15 @@ feature 'Cows' do
       expect(page).to have_content(cow.name)
     end
   end
+
+  context "on index homepage" do
+    it "can show a single cow" do
+      cow = Cow.create({name:'Flossy', age:4})
+      visit cows_path
+      click_link 'Show'
+      expect(page).to have_content(cow.name)
+    end
+  end
+
 end
+
